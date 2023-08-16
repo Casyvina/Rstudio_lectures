@@ -1,0 +1,315 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+```{r}
+print("String")
+
+
+print("man")
+```
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+#How to create a Notebook using the command like below:
+
+```{r}
+
+```
+
+# 2. Data Concepts
+## Datatypes
+
+- What are the different datatypes?
+- Why it matters?
+- How to convert datatypes
+
+Data types have 5 primary types:
+1. Numeric : Whole numbers E.g 20.8, 30.5 e.t.c
+2. Integer : Integers E.g 3, 4, 5, etc
+3. Character : Strings E.g "Technology", "Joseph"
+4. Factor : Categorical Vehicles E.g Rank A, B, C
+5. Logical : Logic E.g TRUE/FALSE
+
+```{r}
+# character
+"the school is closed today. Yay!"
+"ATAfrica company"
+
+# numeric
+123.01
+123
+
+# integer
+123L
+
+# logical
+TRUE
+````
+
+# Convert between  datatypes -------
+```{r}
+# To numeric
+as.numeric("123")
+as.numeric("apple")
+
+# To character
+as.character(123)
+as.character(TRUE)
+
+# To Logical
+as.logical("True")
+as.logical(123)
+as.logical(1)
+as.logical(0)
+as.logical("joseph")
+
+```
+
+## Data Structures
+
+- What are the different types of data structures?
+- When to use which data structure
+- Homogenous vs Non-homogenous structures
+
+### Vector
+
+Vectors are one-dimensional datatypes, used to store multiple items of same type in a single object.
+
+E.g 
+Company Names - "ATAfrica", "ZTMAcademy", "Ferma", "PhotoSystem"
+
+*Note* num-bytes, Cannot mix numbers and names in the same vector
+
+### Matrix
+Matrix is a two dimensional data type, where the data is arranged in the form of rows and columns.
+
+All items in a matrix (across columns as well) should be of the same *data type*.
+
+E.g
+Company Names - "ATAfrica", "ZTMAcademy", "Ferma", "PhotoSystem"
+Locations - "Lagos", "Australia", "Lokoja", "Akure"
+
+*Note* Matrix is 2-D, Cannot mix numbers and names in the same matrix
+
+### Dataframe
+
+Like matrixm a data.frame is also a two dimensional datatype, where the data is aranged in the form of rows and columns.
+
+But unlike matrix, the columns can be of different data types.
+
+E.g
+Company Names - "ATAfrica", "ZTMAcademy", "Ferma", "PhotoSystem"
+Locations - "Lagos", "Australia", "Lokoja", "Akure"
+Share Price($) - 20.8, 30.1, 10.8, 5.0
+Profit - 38.5, 40.5, 17, 14.4
+
+*Note* num-bytes, Use dataframes for tables with different datatypes
+
+
+### List
+
+List is used to store unstructured data.
+
+Like data.frame, list can store data of different data types.
+
+But unlike, data.frame, the data is not in form of rows and columns. 
+A list can even contain one or more data.frames inside it.
+
+*Note* num-bytes, List can hold multiple datatypes
+
+## Key Data Structures
+1. Vector
+2. Matrix
+3. Dataframe
+4. List
+
+- other Data structures
+1. Time Series
+2. Package specific data structures
+
+Data Structures
+Homogenous - vectors
+Heterogeneous - List, DataFrame
+
+*Note* Lists can hold unstructured data, Dataframes is good for tables
+
+
+# 3. Vectors
+## Vectorization
+
+- Purpose of vectors
+Vectorization
+
+### Vectors - Concept
+* You have 4 employees
+* They have worked for you for different number of months E.g 6, 8, 12, 6 and salary Wages per month is 5000, 15000, 7000, 15000
+* How will you store this data in a programming language?
+
+Answer - *Vectorization*
+To understand vectorization, lets consider the group of data: Months and Wage per month
+
+How will you calculate Total Wage programmatically?
+
+*Note* One way is to compute one by one (Conventional Way Explicit Loops)
+
+The Alternative way or the vector way is have simultaneous operations i.e Vectorization (R enables vectorization)
+
+#### Case Study : Online Pizza Advertisement
+
+1 - Online Chicken Co. Case Problem
+
+2 - Company inputs and data fields associated with the case
+
+3 - High level solution approach
+
+
+1. *Online Chicken Co.* 
+company request that `"Recommend them as optimal ad strategy"`
+
+I want you to analyze the sale data of 28 days and provide us with the following insights:
+
+* The `impact of revenue increase` by adding an extra shift every 3th day of the week.
+
+* `Recommend advertisement strategy`: Ad-promotion campaign for Tue and Thu (@45% increase in clicks) OR package for Mon-Fri-Sun(@25% increase in clicks)?
+
+*Note* : Have end objective in mind while starting an analysis
+
+
+2. *Company inputs*
+
+* `Sales data` is available with the company in hard copy only
+
+* First day sales is `200 units`, and has increased daily by `3 unit`
+
+* Analysis to be done for `28 days` for July
+
+* Price of chicken is `#1500`
+
+* On every `3rd day`, company provides `discount of 45%` on this price
+
+* Number of `daily visitors` who visit their website are between `1000 to 1100`
+
+*Note* In real projects, sometimes you may have to make assumptions and create data if it is not available
+* If data is available do sanity checks to ensure correctness before proceeding to next step
+
+
+3. *High Level Solution Approach*
+
+`CREATE` - Sale data, discount data days, visitors
+
+`TRANSFORM` - visitors data, missing values from 'clicks' data
+
+`ANALYZE` - Total revenues for different scenarios
+
+*Note* Creating and transforming data is typically part of any analytics project, 
+Analysis of different scenarios enables you to generate holistic insights
+
+## Create vector with a single element
+
+Basic for Programming in R
+
+`Clear screen` `Create a vector` `Check items in R-console`
+
+
+```{r}
+# HOW TO CREATE A SINGLE ELEMENT VECTOR --------
+
+# 1. Create data for a day's sales activity --------
+month <- "August_2023" # Create  month vector
+month = "August_2023"
+month
+
+# 2. See what variables are present in global namespace ---------
+ls()
+rm(month)
+ls()
+
+# Clears the screen
+cat("\14") # or `ctrl+L`
+
+# 3. Arrow in opposite direction also works -------
+"August_2023" -> month
+month
+
+# 4. Check class and length -------
+class(month) # Character class
+length(month) # Equals 1
+
+# 5. Create day of month ----------
+day_of_month <- 16.0 # Create date numeric vector
+class(day_of_month)
+day_of_month
+
+
+# 6. Store as integer
+day_of_month <-  16L 
+class(day_of_month)
+
+# 7. Change to character -------
+day_of_month <- as.character(day_of_month) # change class to character
+day_of_month
+class(day_of_month)
+
+# 8. Change back
+day_of_month <- as.numeric(day_of_month) # Change back class to numeric
+day_of_month
+class(day_of_month)
+
+# 9. Case Sensitive
+Day_Of_Month <- 10 # Variables are case sensitive
+Day_Of_Month
+day_of_month
+
+# Challenge - create a vector for to enter the year value as 2023 and change to character
+
+current_year <- 2023
+class(current_year)
+current_year  <- as.character(current_year)
+class(current_year)
+```
+### Create group of elementss in a vector
+
+- Create a vector containing multiple elements
+
+- Accesing Element
+
+- Reserving empty space in memory
+
+Example
+-Month- Aug_2023, Aug_2023, Aug_2023
+-Day of month- 12, 15, 16
+-Weekday- Sun, Wed, Thur
+-Year- 2023, 2023, 2023
+-Day type-WN, WY, WY
+-Sales- 100, 103, 105
+-Discount- 1, 0.5, 1
+
+```{r}
+
+
+
+
+
+
+```
+
+
+
+
+
+
+
+.
